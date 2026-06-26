@@ -3,11 +3,19 @@ body
 {
 	font-family: 'Roboto Condensed';
 	font-size: 20px;
+	padding:1% 5%;
 }
-p
+p 
 {
-	text-align:justify;
+	text-align: justify;
+	text-indent: 48px;
+	line-height:32px;
 }
+	p::first-letter 
+	{
+		font-size: 32px;
+		font-family:'Segoe Script';
+	}
 figure
 {
 	text-align: center;
@@ -17,4 +25,22 @@ figure
 ul
 {
 	list-style:none;
+}
+a
+{
+	text-decoration:none;
+}
+a:active
+{
+	color:green;
+}
+a:visited
+{
+	color:darkgreen;
+}
+a:hover 
+{
+	font-weight: 800;
+	background-color: black;
+	color: white;
 }
