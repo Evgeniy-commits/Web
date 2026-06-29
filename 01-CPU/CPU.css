@@ -1,15 +1,21 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-body 
-{
+body {
 	font-family: 'Roboto Condensed';
 	font-size: 20px;
-	padding:1% 5%;
+	padding: 1% 5%;
+	background-image: url('img/www.jpg');
+	background-attachment:fixed;
+	background-repeat:no-repeat;
+	background-size:cover;
+	backdrop-filter:blur(4px);
 }
 p 
 {
 	text-align: justify;
 	text-indent: 48px;
-	line-height:32px;
+	line-height: 32px;
+	background-color: rgba(220, 220, 220, 0.5);
+	border-radius: 16px;
 }
 	p::first-letter 
 	{
@@ -44,3 +50,18 @@ a:hover
 	background-color: black;
 	color: white;
 }
+	:target /*> span*/
+	{
+		background-color:limegreen
+	
+	}
+		:target + div {
+			/*background-color: lightgray;*/
+			border-radius: 16px;
+			background-color: rgba(220, 220, 220, 0.9) ;
+			box-shadow: 0 0 25px 25px rgba(220, 220, 220, 0.7);
+		}
+	div
+	{
+		padding: 16px;
+	}
