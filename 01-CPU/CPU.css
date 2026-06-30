@@ -3,18 +3,18 @@ body {
 	font-family: 'Roboto Condensed';
 	font-size: 20px;
 	padding: 1% 5%;
-	background-image: url('img/www.jpg');
-	background-attachment:fixed;
-	background-repeat:no-repeat;
-	background-size:cover;
-	backdrop-filter:blur(4px);
+	background-image: linear-gradient(rgba(108, 146, 175, 1), rgba(110, 127, 128, 0.6)), url('img/www.jpg');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	backdrop-filter: blur(2px);
 }
 p 
 {
 	text-align: justify;
 	text-indent: 48px;
 	line-height: 32px;
-	background-color: rgba(220, 220, 220, 0.5);
+	/*background-color: rgba(220, 220, 220, 0.5);*/
 	border-radius: 16px;
 }
 	p::first-letter 
@@ -56,7 +56,6 @@ a:hover
 	
 	}
 		:target + div {
-			/*background-color: lightgray;*/
 			border-radius: 16px;
 			background-color: rgba(220, 220, 220, 0.9) ;
 			box-shadow: 0 0 25px 25px rgba(220, 220, 220, 0.7);
