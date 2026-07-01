@@ -22,6 +22,7 @@ p
 		font-size: 32px;
 		font-family:'Segoe Script';
 	}
+	
 figure
 {
 	text-align: center;
@@ -50,14 +51,14 @@ a:hover
 	background-color: black;
 	color: white;
 }
-	:target /*> span*/
-	{
+	/*:target*/ /*> span*/
+	/*{
 		background-color:limegreen
 	
-	}
+	}*/
 		:target + div {
 			border-radius: 16px;
-			background-color: rgba(220, 220, 220, 0.9) ;
+			background-color: rgba(220, 220, 220, 0.6) ;
 			box-shadow: 0 0 25px 25px rgba(220, 220, 220, 0.7);
 		}
 div
@@ -66,7 +67,7 @@ div
 }
 .cite {
 	/*border: solid 8px;*/
-	border-left: solid 8px blue;
+	border-left: solid 8px rgb(100, 101, 169);
 	padding: 20px 50px;
 	margin: 40px 30px 20px;
 }

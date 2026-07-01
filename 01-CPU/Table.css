@@ -1,0 +1,50 @@
+﻿table 
+{
+	margin: 15px auto;
+	text-align: center;
+	/*border-spacing: 0;*/
+	border: solid 4px black;
+	border-collapse: collapse;
+	width: 50%;
+}
+	table:hover 
+	{
+		box-shadow: 0 0 25px 15px gray;
+	}
+caption
+{
+	text-align:left;
+}
+thead 
+{
+	border: solid 4px black;
+}
+thead th 
+{
+	border: solid 4px black;
+	padding: 10px;
+	background-color: #5555AA;
+	color: aliceblue;
+}
+tbody th 
+{
+	border: solid 4px black;
+	text-align: left;
+}
+th, td
+{
+	border: solid 1px black;
+	padding: 5px;
+}
+tr:hover 
+{
+	box-shadow: inset 0 -3px 10px 2px lightblue;
+}
+td:hover 
+{
+	box-shadow: inset 0 -3px 8px 0px green;
+}
+tr:nth-child(even) 
+{
+	background-color: lightgray;
+}
