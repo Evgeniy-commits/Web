@@ -114,16 +114,75 @@
 
 		<p> Для чего предназначены дополнительные наборы команд? В первую очередь — для увеличения быстродействия при выполнении наиболее частых операций. Одна команда из дополнительного набора, как правило, выполняет действие, для которого понадобилась бы небольшая процедура, состоящая из команд основного набора, причём специальная команда выполняется процессором быстрее, чем заменяющая её последовательность. Однако в 99% случаев ничего такого, чего нельзя было бы сделать с помощью основных команд, команды из дополнительного набора также не делают. Таким образом, упомянутая выше программная проверка поддержки дополнительных наборов команд процессором должна выполнять очень простую функцию: если, например, процессор поддерживает SSE — значит, считать будем быстро и с помощью команд из набора SSE. Если нет — будем считать медленнее, с помощью команд из основного набора. Корректно написанная программа обязана действовать именно так. Впрочем, сейчас практически никто не проверяет у процессора наличие поддержки MMX, т.к. все CPU, вышедшие за последние 10 лет, этот набор поддерживают гарантированно. Для справки приведём табличку, на которой обобщена информация о поддержке различных расширенных наборов команд различными десктопными (предназначенными для настольных ПК) и некоторыми мобильными процессорами.</p>
 
-		-------------------------------------------------------
-		-------------------------------------------------------
+		
+		<div class="overflow-x-auto">
+		<table align="CENTER" border="0" cellpadding="3" cellspacing="1" width="85%" class="w-full">
+			<tbody>
+			<tr class="thead"><td>Процессор</td><td>Год выпуска</td><td>x86-64</td><td>PPro</td><td>MMX</td><td>Версия<br>SSE</td><td>3DNow!</td></tr>
+				<tr class="thead"><td colspan="7"><em>Процессоры Intel</em></td></tr>
+				<tr class="row1"><td>Pentium</td>			<td>1993</td><td ></td><td ></td><td ></td><td ></td><td ></td></tr>
+				<tr class="row2"><td>Pentium Pro</td>		<td>1995</td><td ></td><td >x</td><td ></td><td ></td><td ></td></tr>
+				<tr class="row1"><td>Pentium MMX</td>		<td rowspan="2">1997</td><td ></td><td ></td><td >x</td><td ></td><td ></td></tr>
+				<tr class="row2"><td>Pentium II</td>		<td></td><td >x</td><td >x</td><td ></td><td ></td></tr>
+				<tr class="row1"><td>Celeron</td>			<td>1998</td><td ></td><td >x</td><td >x</td><td ></td><td ></td></tr>
+				<tr class="row2"><td>Pentium III</td>		<td>1999</td><td ></td><td >x</td><td >x</td><td >1</td><td ></td></tr>
+				<tr class="row1"><td>Pentium 4</td>			<td rowspan="2">2000</td><td ></td><td >x</td><td >x</td><td >2</td><td ></td></tr>
+				<tr class="row2"><td>Celeron</td>			<td></td><td >x</td><td >x</td><td >1</td><td ></td></tr>
+				<tr class="row1"><td>Celeron</td>			<td>2002</td><td ></td><td >x</td><td >x</td><td >2</td><td ></td></tr>
+				<tr class="row2"><td>Pentium M</td>			<td>2003</td><td ></td><td >x</td><td >x</td><td >2</td><td ></td></tr>
+				<tr class="row1"><td>Pentium 4</td>			<td rowspan="2">2004</td><td >x</td><td >x</td><td >x</td><td >3</td><td ></td></tr>
+				<tr class="row2"><td>Celeron D</td>			<td></td><td >x</td><td >x</td><td >3</td><td ></td></tr>
+				<tr class="row1"><td>Pentium D, EE</td>		<td rowspan="2">2005</td><td  rowspan="2">x</td><td  rowspan="2">x</td><td  rowspan="2">x</td><td  rowspan="2">3</td><td ></td></tr>
+				<tr class="row2"><td>Celeron D</td>			<td></td></tr>
+				<tr class="row1"><td>Celeron</td>			<td rowspan="4">2006</td><td >x</td><td >x</td><td >x</td><td >3S</td><td ></td></tr>
+				<tr class="row2"><td>Celeron M</td>			<td rowspan="2"></td><td  rowspan="2">x</td><td  rowspan="2">x</td><td  rowspan="2">3</td><td ></td></tr>
+				<tr class="row1"><td>Core Solo, Duo</td>	<td></td></tr>
+				<tr class="row2"><td>Core 2</td>			<td>x</td><td >x</td><td >x</td><td >3S</td><td ></td></tr>
+				<tr class="row1"><td>Core 2</td>			<td rowspan="4">2007</td><td >x</td><td >x</td><td >x</td><td >4.1</td><td ></td></tr>
+				<tr class="row2"><td>Celeron M</td>			<td rowspan="2">x</td><td  rowspan="2">x</td><td  rowspan="2">x</td><td  rowspan="2">3S</td><td ></td></tr>
+				<tr class="row1"><td>Pentium (DC)</td>		<td></td></tr>
+				<tr class="row2"><td>Pentium (DC, M)</td>	<td></td><td >x</td><td >x</td><td >3</td><td ></td></tr>
+				<tr class="row1"><td>Atom</td>				<td rowspan="3">2008</td><td  rowspan="2">x</td><td  rowspan="2">x</td><td  rowspan="2">x</td><td  rowspan="2">3S</td><td ></td></tr>
+				<tr class="row2"><td>Celeron (DC)</td>		<td></td></tr>
+				<tr class="row1"><td>Core i7</td>			<td>x</td><td >x</td><td >x</td><td >4.2</td><td ></td></tr>
+				<tr class="row2"><td>Core i3, i5</td>		<td>2009</td><td >x</td><td >x</td><td >x</td><td >4.2</td><td ></td></tr>
+				<tr class="row1"><td>Core i9</td>			<td>2010</td><td >x</td><td >x</td><td >x</td><td >4.2</td><td ></td></tr>
+				<tr class="thead"><td colspan="7"><em>Процессоры AMD</em></td></tr>
+				<tr class="row1"><td>K5</td>				<td>1996</td><td ></td><td ></td><td ></td><td ></td><td ></td></tr>
+				<tr class="row2"><td>K6</td>				<td>1997</td><td ></td><td ></td><td >x</td><td ></td><td ></td></tr>
+				<tr class="row1"><td>K6-3D, K6-2+</td>		<td>1998</td><td ></td><td ></td><td >x</td><td ></td><td >x</td></tr>
+				<tr class="row2"><td>K6-III</td>			<td rowspan="2">1999</td><td ></td><td ></td><td >x</td><td ></td><td >x</td></tr>
+				<tr class="row1"><td>Athlon</td>			<td></td><td >x</td><td >x</td><td ></td><td >x</td></tr>
+				<tr class="row2"><td>Duron</td>				<td>2000</td><td ></td><td >x</td><td >x</td><td ></td><td >x</td></tr>
+				<tr class="row1"><td>Athlon XP</td>			<td rowspan="3">2001</td><td  rowspan="3"></td><td  rowspan="3">x</td><td  rowspan="3">x</td><td  rowspan="3">1</td><td  rowspan="3">x</td></tr>
+				<tr class="row2"><td>Athlon 4 (M)</td></tr>
+				<tr class="row1"><td>Duron</td></tr>
+				<tr class="row1"><td>Sempron</td>			<td></td><td >x</td><td >x</td><td >x</td><td >2 (3)</td><td >x</td></tr>
+				<tr class="row2"><td>Athlon 64</td>			<td>2003</td><td >x</td><td >x</td><td >x</td><td >2</td><td >x</td></tr>
+				<tr class="row1"><td>Sempron</td>			<td>2004</td><td ></td><td >x</td><td >x</td><td >1 (2)</td><td >x</td></tr>
+				<tr class="row2"><td>Athlon XP-M</td>		<td rowspan="4">2005</td><td ></td><td >x</td><td >x</td><td >2</td><td >x</td></tr>
+				<tr class="row2"><td>Athlon (64) X2</td>	<td rowspan="2">x</td><td  rowspan="2">x</td><td  rowspan="2">x</td><td  rowspan="2">3</td><td  rowspan="2">x</td></tr>
+				<tr class="row1"><td>Turion (M)</td></tr>
+				<tr class="row2"><td>Sempron (M)</td>		<td >x</td><td >x</td><td >3</td><td >x</td></tr>
+				<tr class="row1"><td>Phenom</td>			<td>2007</td><td >x</td><td >x</td><td >x</td><td >4.a</td><td >x</td></tr>
+				<tr class="row2"><td>Athlon X2</td>			<td>2008</td><td >x</td><td >x</td><td >x</td><td >4.a</td><td >x</td></tr>
+				<tr class="row1"><td>Athlon Neo</td>		<td rowspan="2">2009</td><td >x</td><td >x</td><td >x</td><td >3</td><td >x</td></tr>
+				<tr class="row2"><td>Phenom II</td>						 <td rowspan="2">x</td><td  rowspan="2">x</td><td  rowspan="2">x</td><td  rowspan="2">4.a</td><td  rowspan="2">x</td></tr>
+				<tr class="row1"><td>Athlon II, X3, X4</td></tr>
+			</tbody>
+		</table>
+		</div>
+		
 
-		Примечания:
-		PPro — означает наличие всех общих команд;
-		Версия SSE — номер последней поддерживаемой версии, подразумевая и все предыдущие;
-		Ряд SSE: SSE, SSE2, SSE3, SSSE3, SSE4.1, SSE4.2;
-		Для процессоров AMD наличие SSE4.a означает поддержку только SSE, SSE2, SSE3 и SSE4.a;
-		(M) — мобильная модель, даже если явно в имени не указано;
-		(DC) — двухядерный процессор, указано в индексе модели.
+		<cite>
+			Примечания:
+			PPro — означает наличие всех общих команд;
+			Версия SSE — номер последней поддерживаемой версии, подразумевая и все предыдущие;
+			Ряд SSE: SSE, SSE2, SSE3, SSSE3, SSE4.1, SSE4.2;
+			Для процессоров AMD наличие SSE4.a означает поддержку только SSE, SSE2, SSE3 и SSE4.a;
+			(M) — мобильная модель, даже если явно в имени не указано;
+			(DC) — двухядерный процессор, указано в индексе модели.
+		</cite>
 
 		<p>
 			На данный момент всё популярное десктопное программное обеспечение (операционные системы Windows и Linux, офисные пакеты, компьютерные игры, и прочее) разрабатывается именно для x86-процессоров. Оно выполняется (за исключением «дурно воспитанных» программ) на любом x86-процессоре, независимо от того, кто его произвёл. Поэтому вместо ориентированных на разработчика изначальной архитектуры терминов «Intel-совместимый» или «Pentium-совместимый», стали употреблять нейтральное название: «x86-совместимый процессор», «процессор с архитектурой x86». В данном случае под «архитектурой» понимается архитектура системы команд (ISA, Instruction Set Architecture) — совместимость с определённым набором команд с точки зрения программиста. Есть и другая трактовка того же термина.
