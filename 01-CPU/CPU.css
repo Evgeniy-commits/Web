@@ -60,11 +60,13 @@ a:hover
 			background-color: rgba(220, 220, 220, 0.9) ;
 			box-shadow: 0 0 25px 25px rgba(220, 220, 220, 0.7);
 		}
-	div
-	{
-		padding: 16px;
-	}
-td
+div
 {
-	vertical-align:top;
+	padding: 16px;
+}
+.cite {
+	/*border: solid 8px;*/
+	border-left: solid 8px blue;
+	padding: 20px 50px;
+	margin: 40px 30px 20px;
 }
