@@ -1,0 +1,16 @@
+﻿table {
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin: auto;
+}
+
+.Black {
+	width: 20px;
+	height: 20px;
+	background-color: black;
+}
+.White {
+	width: 20px;
+	height: 20px;
+	background-color: white;
+}
