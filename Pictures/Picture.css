@@ -3,14 +3,16 @@
 	border-collapse: collapse;
 	margin: auto;
 }
-
-.Black {
+td {
 	width: 20px;
 	height: 20px;
+}
+.Black {
 	background-color: black;
 }
 .White {
-	width: 20px;
-	height: 20px;
 	background-color: white;
+}
+.Red{
+	background-color: red;
 }
