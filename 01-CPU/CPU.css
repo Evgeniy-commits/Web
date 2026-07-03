@@ -45,12 +45,11 @@ a:visited
 {
 	color:darkgreen;
 }
-a:hover 
-{
-	font-weight: 800;
-	background-color: black;
-	color: white;
-}
+	a:hover {
+		font-weight: 800;
+		background-color: gray;
+		color: black;
+	}
 	/*:target*/ /*> span*/
 	/*{
 		background-color:limegreen
