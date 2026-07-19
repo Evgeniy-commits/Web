@@ -159,7 +159,7 @@
 	background-color: blue;
 	box-shadow: 
 		inset 1px -1px 1px 0px darkblue,
-		inset -1px -1px 2px 2px darkblue
+		inset -1px -1px 2px 0px darkblue
 		;
 
 	display: flex;
@@ -173,4 +173,46 @@
 	height: 258px;
 	background-color: rgb(235, 233, 216);
 	box-shadow: -1px 1px 2px 0px darkblue;
+}
+
+.menu-bar
+{
+	border-bottom: solid 1px white;
+}
+
+.menu-button
+{
+	background-color: transparent;
+	border:none;
+}
+
+.menu-button:hover
+{
+	background-color: #5555DD;
+	color: white;
+}
+
+.menu-button, .menu-button:hover
+{
+	height: 24px;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////*/
+.display-container
+{
+	display:flex;
+	justify-content: center;
+}
+.display 
+{
+	width: 98%;
+	border-radius: 0;
+	border-style: none;
+	border: solid 1px gray;
+	margin: 2px;
+}
+
+input:focus-visible
+{
+	outline: none;
 }
