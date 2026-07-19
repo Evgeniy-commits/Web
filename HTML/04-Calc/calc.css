@@ -239,18 +239,19 @@ input:focus-visible
 	margin: 8px auto;
 	width: 90%;
 	height: 70%;
-	border: solid 1px;
+	/*border: solid 1px;*/
 	display: grid;
 	grid-template-rows: repeat(5, auto);
 	grid-template-columns: repeat(6, auto);
 	grid-gap: 5px;
+	justify-items: center;
 }
 
 .square
 {
-	border: solid 1px;
-	width: 32px;
-	height: 32px;
+	border: inset 1px;
+	width: 30px;
+	height: 30px;
 }
 
 .calc-buttons button
@@ -266,7 +267,19 @@ input:focus-visible
 	grid-column-end: 7;
 }
 
-button
+.clear-buttons > button
 {
+	width: 69.8px;
+}
 
+.menu-bar button, .calc-buttons button
+{
+	font-size: 11px;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////*/
+
+.memory-button, .operation-button, .clear-buttons > button
+{
+	color: red;
 }
