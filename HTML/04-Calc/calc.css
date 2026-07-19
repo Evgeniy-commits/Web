@@ -78,6 +78,25 @@
 	box-shadow: inset -1px -2px 4px 0px #000088, inset 4px 1px 4px 0px #7788FF;
 }
 
+.control-button:active 
+{
+	background-image:none;
+	background-color: rgb(85, 85, 192);
+	box-shadow: 
+		inset 4px 2px 4px 0px #000088, 
+		inset -4px -2px 4px 0px #7788FF;
+}
+
+.control-button:hover
+{
+	background-image:linear-gradient(
+			to bottom right,
+			rgb(149, 109, 249),
+			rgb(45, 109, 249),		
+			rgb(149, 109, 249)		
+			);
+}
+
 .control-button-signature
 {
 	font-size: 20px;
@@ -93,6 +112,40 @@
 {
 	background-color: rgb(221, 85, 26);
 	box-shadow:
-		inset -1px -1px 4px 0px #880000,
+		inset -1px -2px 4px 0px #880000,
 		inset 4px 2px 4px 0px #FF8888;
+}
+
+.close-button:hover
+{
+	background-image: linear-gradient( 
+		to bottom right, 
+		rgb(249, 149, 149), 
+		rgb(249, 85, 26), 
+		rgb(249, 149, 149) 
+		);
+}
+
+.close-button:active 
+{
+	box-shadow: 
+		inset 4px 2px 4px 0px #880000, 
+		inset -2px -1px 4px 0px #FF8888;
+	background-image: linear-gradient( 
+		to bottom right, 
+		rgb(224, 49, 49), 
+		rgb(224, 85, 26), 
+		rgb(224, 64, 85) 
+		);
+}
+
+.control-button[disabled], .control-button[disabled]:hover, .control-button[disabled]:active
+{
+	color: #CCCCCC;
+	border-color: #CCCCCC;
+	background-image: none;
+	background-color: rgb(45, 109, 249);
+	box-shadow: 
+		inset -1px -2px 4px 0px #000088, 
+		inset 4px 1px 4px 0px #7788FF;
 }
