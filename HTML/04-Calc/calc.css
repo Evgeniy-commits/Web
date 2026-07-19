@@ -283,3 +283,21 @@ input:focus-visible
 {
 	color: red;
 }
+
+.calc-buttons button
+{
+	box-shadow: inset 1px -2px 5px 0px #DDDDDD;
+	border: solid 1px darkblue;
+	border-radius: 5px;
+}
+
+.calc-buttons button:hover 
+{
+	box-shadow: inset 0px -1px 5px 0px orange;
+}
+
+.calc-buttons button:active
+{
+	background-color: lightgray;
+	box-shadow: inset 0px -1px 5px 0px #EEEEEE;
+}
