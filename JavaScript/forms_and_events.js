@@ -6,8 +6,9 @@ function Factorial()
 	let resultElement = document.getElementById("factorialresult");
 	resultElement.innerHTML = number;
 
-	let f = 1;
-	for (let i = 1; i <= number; i++) { f *= i; }
+	let f = BigInt(1);
+	for (let i = 1n; i <= number; i++) { f *= i; }
 
-	resultElement.innerHTML = `=${f}`;
+	/*resultElement.textContent = `${number}! = ${f}`;*/
+	resultElement.innerHTML = `${number}! = ${f}`;
 }

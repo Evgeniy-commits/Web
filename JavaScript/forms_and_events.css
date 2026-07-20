@@ -20,7 +20,7 @@ input
 
 .result 
 {
-	width: 50%;
+	max-width: 50%;
 }
 
 .pair
@@ -31,4 +31,9 @@ input
 lable
 {
 	width: 50%
+}
+
+#factorial-result
+{
+	/*white-space: normal;*/
 }
