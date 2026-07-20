@@ -3,46 +3,24 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
+	<link rel="stylesheet" href="forms_and_events.css" />
     <title>Формы и события</title>
-	<style>
-		input, div, button
-		{
-			font-size: 32px;
-		}
-		.task
-		{
-			display: flex;
-			width: 50%;
-		}
-		.result
-		{
-			width: 50%;
-		}
-	</style>
 </head>
 <body>
 	<h1>Формы и события</h1>
     <h2>Factorial</h2>
 	<div class="task">
-		<input id="number" type="number" min="0" />
+		
+			<lable for="number">Введите целое число от 0 до 12</lable>
+			<input id="number" type="number" min="0" onchange="Factorial()" placeholder="Введите целое число" />
+		
 		<div id="factorialresult" class="result"></div>
 		<button onclick="Factorial()">Вычислить</button>
 	</div>
+	<hr />
+	<div class="task">
 
-	<script>
-		function Factorial()
-		{
-			let numberElement = document.getElementById("number");
-			let number = numberElement.value;
-			let resultElement = document.getElementById("factorialresult");
-			resultElement.innerHTML = number;
-
-			let f = 1;
-			for (let i = 1; i <= number; i++)
-			{ f *= i; }
-
-			resultElement.innerHTML = f;
-		}
-	</script>
+	</div>
+	<script src="forms_and_events.js"></script>
 </body>
 </html>
