@@ -7,6 +7,11 @@
     <title>Exponentiation</title>
 </head>
 <body>
+    <div id="home">
+    <a href="indexHW.html">
+        <img src="home.ico" alt="На главную" width="30" height="30" />
+    </a>
+    </div>
     <h1>Степень</h1>
     <label for="base">Основание:</label>
     <input type="number" id="base" placeholder="Число" />
@@ -15,23 +20,6 @@
     <button onclick="calc()">Вычислить</button>
     <div id="result"></div>
 
-    <script>
-        function calc()
-        {
-            let base = parseFloat(document.getElementById('base').value);
-			let exponent = parseFloat(document.getElementById('exponent').value);
-
-           
-
-            if (isNaN(base) || isNaN(exponent))
-            {
-				document.getElementById('result').textContent = 'Пожалуйста, введите корректные числа.';
-				return;
-			}
-
-			let result = Math.pow(base, exponent);
-			document.getElementById('result').textContent = `${base} в степени ${exponent} = ${result}`;
-		}
-    </script>
+    <script src="exponentiation.js"></script>
 </body>
 </html>

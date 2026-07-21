@@ -22,3 +22,10 @@ input, button
 {
 	color: red;
 }
+
+#result 
+{
+	white-space: normal;
+	overflow-wrap: break-word;
+	width: 50%;
+}

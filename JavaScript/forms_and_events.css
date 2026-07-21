@@ -14,13 +14,11 @@ input
 	display: flex;
 	width: 100%;
 	align-items: center;
-	/*padding-bottom: 20px;
-	border-bottom: solid 5px;*/
 }
 
 .result 
 {
-	max-width: 50%;
+	width: 90%;
 }
 
 .pair
@@ -33,7 +31,8 @@ lable
 	width: 50%
 }
 
-#factorial-result
+#factorial-result 
 {
-	/*white-space: normal;*/
+	white-space: normal;
+	overflow-wrap: break-word;
 }
