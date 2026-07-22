@@ -12,3 +12,23 @@ function Factorial()
 	resultElement.textContent = `${number}! = ${f}`;
 //	resultElement.innerHTML = `${number}! = ${f}`;
 }
+
+function setImage()
+{
+	let filename = document.getElementById("image-file");
+	let reader = new FileReader();
+
+	reader.onload = function (e)
+	{
+		document.getElementById("image").src = e.target.result;
+	}
+	reader.readAsDataURL(filename.files[0]);
+}
+function setBackgroundColor()
+{
+	document.body.style.backgroundColor = document.getElementById("background-color").value;
+}
+function setForegroundColor()
+{
+	document.body.style.color = document.getElementById("foreground-color").value;
+}
