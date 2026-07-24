@@ -1,4 +1,32 @@
-﻿input, div, button 
+﻿.header{
+	width: 98%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.header img{
+	width: 24px;
+	height: 24px;
+}
+
+.dark{
+	background-color: #323232;
+	color: #C8C8C8;
+}
+
+.light{
+	background-color: white;
+	color: black;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////// */
+
+#mouse{
+	/*border: solid 1px;
+	width: 200px;*/
+}
+
+input, div, button 
 {
 	font-size: 24px;
 	width: 50%;
@@ -64,3 +92,6 @@ lable
 
 	margin: 12px;
 }
+
+/*  /////////////////////////////////////////////////////////////////////// */
+

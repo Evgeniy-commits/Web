@@ -6,7 +6,15 @@
 	<link rel="stylesheet" href="forms_and_events.css" />
     <title>Формы и события</title>
 </head>
-<body>
+<!--<body onmousemove="traceMouse(event)">-->
+<body class="light">
+	<div class="header">
+		<div>Header</div>
+		<div id="mouse"></div>
+		<div id="debug-background"></div>
+		<img src="moon.png" id="switch-background"/>
+	</div>
+
 	<h1>Формы и события</h1>
 	<details>
 		<summary>Простейшие задачи</summary>
@@ -39,11 +47,11 @@
 		<div class="colors">
 			<div class="select-color">
 				<lable for="background-color">Цвет фона</lable>
-				<input type="color" id="background-color" value="#FFFFFF" oninput="setColor(event)"/>
+				<input type="color" id="background-color" value="#FFFFFF" />
 			</div>
 			<div class="select-color">
 				<lable for="foreground-color">Цвет текста</lable>
-				<input type="color" id="foreground-color" oninput="setColor(event)"/>
+				<input type="color" id="foreground-color" />
 			</div>
 		</div>
 	</div>

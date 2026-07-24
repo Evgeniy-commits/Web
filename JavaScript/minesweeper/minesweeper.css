@@ -45,8 +45,8 @@ button:hover {
 /*Игровое поле*/
 .game-board{
 	display: grid;
-	grid-template-columns: repeat(10, 30px);
-	grid-template-rows: repeat(10, 30px);
+	grid-template-columns: repeat(10, 20px);
+	grid-template-rows: repeat(10, 20px);
 	gap: 2px;
 	background-color: #bbb;
 	padding: 2px;
@@ -54,8 +54,8 @@ button:hover {
 }
 
 .cell{
-	width: 30px;
-	height: 30px;
+	width: 20px;
+	height: 20px;
 	background-color: #ddd;
 	display: flex;
 	justify-content: center;
@@ -86,10 +86,10 @@ button:hover {
 .cell.flagged::after {
 	content: '🚩';
 	position: absolute;
-	font-size: 20px;
-	line-height: 30px;
+	font-size: 15px;
+	line-height: 20px;
 	text-align: center;
-	width: 100%;
+	width: 80%;
 	height: 100%;
 }
 

@@ -27,8 +27,8 @@ function startGame() {
 	
 	// Обновляем под новый размер
 	const boardElement = document.getElementById('board');
-	boardElement.style.gridTemplateColumns = `repeat(${cols}, 30px)`;
-	boardElement.style.gridTemplateRows = `repeat(${rows}, 30px)`;
+	boardElement.style.gridTemplateColumns = `repeat(${cols}, 20px)`;
+	boardElement.style.gridTemplateRows = `repeat(${rows}, 20px)`;
 
 	flagsPlaced = 0; // важно сбросить счётчик
 
