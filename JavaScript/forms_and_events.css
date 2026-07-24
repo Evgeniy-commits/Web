@@ -1,12 +1,19 @@
-﻿.header{
+﻿body {
+	transition: color 3s, background-color 3s;
+}
+.header{
 	width: 98%;
 	display: flex;
 	justify-content: space-between;
 }
 
-.header img{
-	width: 24px;
-	height: 24px;
+/*.header img*/
+#switch-background {
+	--bg-size: 24px;
+	width: var(--bg-size);
+	height: var(--bg-size);
+	padding: 0 calc(var(--bg-size) / 5);
+	background-size: var(--bg-size) var(--bg-size);
 }
 
 .dark{
@@ -14,9 +21,19 @@
 	color: #C8C8C8;
 }
 
+.dark #switch-background {
+	background-image: url("sun.png");
+	filter: brightness(0) invert(1);
+}
+
 .light{
 	background-color: white;
 	color: black;
+	/*transition: color 3s, background-color 3s;*/
+}
+
+.light #switch-background{
+	background-image: url("moon.png");
 }
 
 /* ////////////////////////////////////////////////////////////////////////////////////// */

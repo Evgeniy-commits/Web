@@ -1,6 +1,5 @@
 // JavaScript source code
-function Factorial()
-{
+function Factorial() {
 	let numberElement = document.getElementById("number");
 	let number = numberElement.value;
 	let resultElement = document.getElementById("factorial-result");
@@ -10,16 +9,14 @@ function Factorial()
 	for (let i = 1n; i <= number; i++) { f *= i; }
 
 	resultElement.textContent = `${number}! = ${f}`;
-//	resultElement.innerHTML = `${number}! = ${f}`;
+	//	resultElement.innerHTML = `${number}! = ${f}`;
 }
 
-function setImage()
-{
+function setImage() {
 	let filename = document.getElementById("image-file");
 	let reader = new FileReader();
 
-	reader.onload = function (e)
-	{
+	reader.onload = function (e) {
 		document.getElementById("image").src = e.target.result;
 	}
 	reader.readAsDataURL(filename.files[0]);
@@ -41,9 +38,9 @@ function setImage()
 //document.getElementById('background-color').addEventListener('input', setColor);
 //document.getElementById('foreground-color').addEventListener('input', setColor);
 
-document.addEventListener('input', (e) => {
-	document.body.style[e.target.id === 'background-color' ? 'backgroundColor' : 'color'] = e.target.value;
-});
+//document.addEventListener('input', (e) => {
+//	document.body.style[e.target.id === 'background-color' ? 'backgroundColor' : 'color'] = e.target.value;
+//});
 //function setColor(e) {
 //	//if (event.target.id === 'background-color')
 //	//	document.body.style.backgroundColor = event.target.value;
@@ -66,12 +63,23 @@ document.addEventListener('mousemove', e => {
 //	switchButton.src = "sun.png";
 //	document.getElementById('debug-background').innerHTML = switchButton.src;
 //}
-
-document.addEventListener('click', () => {
-	let skin = document.body.className;
-	let switchButton = document.getElementById('switch-background');
-	switchButton.src = skin === "dark" ? "moon.png" : "sun.png";
-	document.body.className = skin === "dark" ? "light" : "dark";
-	/*document.getElementById('debug-background').innerHTML = switchButton.src;*/
-	document.getElementById('debug-background').innerHTML = document.body.className;
+document.addEventListener('input', (e) => {
+	document.body.style[e.target.id === 'background-color' ? 'backgroundColor' : 'color'] = e.target.value;
 });
+const skinButton = document.getElementById('switch-background');
+
+if (skinButton) {
+	skinButton.addEventListener('click', () => {
+		document.body.style.backgroundColor = '';
+		document.body.style.color = '';
+		document.body.className = document.body.className === "dark" ? "light" : "dark";
+		//document.body.classList.toggle('dark');
+		//document.body.classList.toggle('light');
+		//let skin = document.body.className;
+		//let switchButton = document.getElementById('switch-background');
+		//switchButton.src = skin === "dark" ? "moon.png" : "sun.png";
+		//document.body.className = skin === "dark" ? "light" : "dark";
+		///*document.getElementById('debug-background').innerHTML = switchButton.src;*/
+		//document.getElementById('debug-background').innerHTML = document.body.className;
+	});
+}
