@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>Calculator</title>
+    <style>
+        :root {
+            --bg-window: #c0c0c0;
+            --title-bar: #000080;
+            --text-title: #ffffff;
+            --border: #808080;
+            --btn-face: #d4d0c8;
+            --btn-shadow: #a6a6a4;
+            --display-bg: #bbbbbb;
+            --display-text: #000000;
+        }
+
+        body {
+            background-color: #008080; /* Classic Windows background */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .main-window {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 320px;
+            height: 450px;
+            background-color: var(--bg-window);
+            border: 2px solid var(--border);
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.4);
+            overflow: hidden;
+            user-select: none;
+        }
+
+        /* Title Bar */
+        .title-bar {
+            height: 24px;
+            background-color: var(--title-bar);
+            color: var(--text-title);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 4px;
+            cursor: default; /* Prevent text selection */
+        }
+
+        .title-bar-left-side {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .app-icon {
+            width: 16px;
+            height: 16px;
+            background-color: #ccc; /* Placeholder if image missing */
+        }
+
+        .control-button {
+            border: 1px solid #fff;
+            background: transparent;
+            color: #fff;
+            padding: 0 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .close-button { background-color: #ff0000; }
+        .close-button-signature { color: #fff; font-weight: bold; }
+
+        /* Client Area */
+        .client-rect {
+            padding: 4px;
+        }
+
+        .menu-bar {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 4px;
+        }
+
+        .menu-button {
+            border: 1px inset var(--btn-shadow);
+            background-color: var(--btn-face);
+            padding: 1px 4px;
+            cursor: default;
+        }
+
+        .display-container {
+            margin-bottom: 8px;
+        }
+
+        .display {
+            width: 100%;
+            height: 30px;
+            text-align: right;
+            border: 1px inset #000;
+            background-color: var(--display-bg);
+            color: var(--display-text);
+            font-size: 18px;
+            padding-right: 6px;
+            box-sizing: border-box;
+        }
+
+        /* Buttons Grid */
+        .calc-buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 4px;
+        }
+
+        button {
+            border: 1px inset var(--btn-shadow);
+            background-color: var(--btn-face);
+            cursor: pointer;
+            padding: 6px 0;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        button:active {
+            border-style: outset;
+            background-color: #c0c0c0;
+        }
+
+        .operation-button {
+            background-color: #f0f0f0;
+        }
+
+        .memory-button {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-window" id="calculatorWindow">
+    <div class="title-bar" id="dragHandle">
+        <div class="title-bar-left-side">
+            <!-- Заглушка иконки, если нет файла -->
+            <div class="app-icon"></div>
+            <div>&#8211 Калькулятор</div>
+        </div>
+        <div class="title-bar-right-side">
+            <button class="control-button"><div class="control-button-signature" style="margin-left: -4px;">&#x1F5D5;</div></button>
+            <button class="control-button" disabled><div class="control-button-signature">&#128470;</div></button>
+            <button class="control-button close-button" id="closeBtn"><div class="control-button-signature close-button-signature">&#10006;</div></button>
+        </div>
+    </div>
+
+    <div class="client-rect">
+        <div class="work-area">
+            <div class="menu-bar">
+                <button class="menu-button">Правка</button>
+                <button class="menu-button">Вид</button>
+                <button class="menu-button">Справка</button>
+            </div>
+
+            <div class="display-container">
+                <input type="text" class="display" id="display" readonly value="0" />
+            </div>
+
+            <div class="calc-buttons">
+                <!-- Row 1: Memory & Clear -->
+                <div class="memory-button" style="grid-column: span 2;"></div> <!-- Empty spacer -->
+                <button id="btn-backspace">Backspace</button>
+                <button id="btn-ce">CE</button>
+                <button id="btn-c">C</button>
+
+                <!-- Row 2: Memory + Numbers -->
+                <button class="memory-button" id="btn-mc">MC</button>
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button class="operation-button" id="btn-div">/</button>
+
+                <!-- Row 3: Memory + Functions -->
+                <button class="memory-button" id="btn-mr">MR</button>
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button class="operation-button" id="btn-mul">*</button>
+
+                <!-- Row 4: Memory + More Functions -->
+                <button class="memory-button" id="btn-ms">MS</button>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button class="operation-button" id="btn-sub">-</button>
+
+                <!-- Row 5: Memory + Final -->
+                <button class="memory-button" id="btn-mplus">M+</button>
+                <button>0</button>
+                <button id="btn-sign">+/-</button>
+                <button>.</button>
+                <button class="operation-button" id="btn-add">+</button>
+
+                <!-- Row 6: Specials & Equals -->
+                <button id="btn-sqrt">sqrt</button>
+                <button id="btn-percent">%</button>
+                <button id="btn-inv">1/x</button>
+                <button style="grid-column: span 2;" class="operation-button" id="btn-eq">=</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- Drag & Drop Logic ---
+    const windowEl = document.getElementById('calculatorWindow');
+    const dragHandle = document.getElementById('dragHandle');
+    let isDragging = false;
+    let initialX, initialY, initialLeft, initialTop;
+
+    dragHandle.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        isDragging = true;
+        initialX = e.clientX;
+        initialY = e.clientY;
+        initialLeft = windowEl.offsetLeft;
+        initialTop = windowEl.offsetTop;
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const deltaX = e.clientX - initialX;
+        const deltaY = e.clientY - initialY;
+        windowEl.style.left = `${initialLeft + deltaX}px`;
+        windowEl.style.top = `${initialTop + deltaY}px`;
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+
+    // Close button
+    document.getElementById('closeBtn').addEventListener('click', () => {
+        windowEl.remove();
+    });
+
+    // --- Calculator Logic ---
+    const display = document.getElementById('display');
+    
+    let currentInput = '';
+    let previousInput = '';
+    let operation = null;
+    let shouldResetDisplay = false;
+    
+    // Memory
+    let memory = 0;
+
+    function updateDisplay() {
+        display.value = currentInput || '0';
+    }
+
+    function inputDigit(digit) {
+        if (shouldResetDisplay) {
+            currentInput = '';
+            shouldResetDisplay = false;
+        }
+        if (digit === '.' && currentInput.includes('.')) return;
+        if (currentInput === '0' && digit !== '.') {
+            currentInput = digit;
+        } else {
+            currentInput += digit;
+        }
+        updateDisplay();
+    }
+
+    function setOperation(op) {
+        if (currentInput === '') return;
+        if (previousInput !== '') {
+            calculate();
+        }
+        operation = op;
+        previousInput = currentInput;
+        currentInput = '';
+        shouldResetDisplay = false;
+    }
+
+    function calculate() {
+        let result;
+        const prev = parseFloat(previousInput);
+        const current = parseFloat(currentInput);
+
+        if (isNaN(prev) || isNaN(current)) return;
+
+        switch (operation) {
+            case '+': result = prev + current; break;
+            case '-': result = prev - current; break;
+            case '*': result = prev * current; break;
+            case '/': 
+                if (current === 0) { alert('Ошибка деления на ноль'); return; }
+                result = prev / current; 
+                break;
+            default: return;
+        }
+
+        currentInput = String(result);
+        previousInput = '';
+        operation = null;
+        updateDisplay();
+    }
+
+    function clearAll() {
+        currentInput = '0';
+        previousInput = '';
+        operation = null;
+        shouldResetDisplay = false;
+        updateDisplay();
+    }
+
+    function clearEntry() {
+        currentInput = '0';
+        updateDisplay();
+    }
+
+    function backspace() {
+        if (shouldResetDisplay) return;
+        currentInput = currentInput.toString().slice(0, -1);
+        if (currentInput === '' || currentInput === '-') {
+            currentInput = '0';
+        }
+        updateDisplay();
+    }
+
+    function toggleSign() {
+        if (currentInput !== '0') {
+            currentInput = String(-parseFloat(currentInput));
+            updateDisplay();
+        }
+    }
+
+    function sqrt() {
+        const val = parseFloat(currentInput);
+        if (val < 0) { alert('Нельзя извлечь корень из отрицательного числа'); return; }
+        currentInput = String(Math.sqrt(val));
+        updateDisplay();
+    }
+
+    function percent() {
+        // Если есть предыдущее значение и операция, считаем процент от него
+        if (previousInput && operation) {
+            const percentValue = (parseFloat(currentInput) / 100) * parseFloat(previousInput);
+            currentInput = String(percentValue);
+        } else {
+            currentInput = String(parseFloat(currentInput) / 100);
+        }
+        updateDisplay();
+    }
+
+    function inverse() {
+        const val = parseFloat(currentInput);
+        if (val === 0) { alert('Деление на ноль невозможно'); return; }
+        currentInput = String(1 / val);
+        updateDisplay();
+    }
+
+    // Memory Functions
+    function memoryClear() { memory = 0; }
+    function memoryRecall() { currentInput = String(memory); updateDisplay(); }
+    function memoryStore() { memory = parseFloat(currentInput); }
+    function memoryAdd() { 
+        if (currentInput !== '') memory += parseFloat(currentInput); 
+    }
+
+    // Event Listeners for Buttons
+    document.querySelectorAll('button').forEach(btn => {
+        const text = btn.textContent;
+        
+        // Digits
+        if (/^\d$/.test(text)) {
+            btn.addEventListener('click', () => inputDigit(text));
+        }
+        
+        // Operations
+        if (text === '+') btn.addEventListener('click', () => setOperation('+'));
+        if (text === '-') btn.addEventListener('click', () => setOperation('-'));
+        if (text === '*') btn.addEventListener('click', () => setOperation('*'));
+        if (text === '/') btn.addEventListener('click', () => setOperation('/'));
+        
+        // Equals
+        if (text === '=') btn.addEventListener('click', calculate);
+        
+        // Clear
+        if (text === 'C') btn.addEventListener('click', clearAll);
+        if (text === 'CE') btn.addEventListener('click', clearEntry);
+        if (text === 'Backspace') btn.addEventListener('click', backspace);
+        
+        // Specials
+        if (text === '+/-') btn.addEventListener('click', toggleSign);
+        if (text === '.') btn.addEventListener('click', () => inputDigit('.'));
+        if (text === 'sqrt') btn.addEventListener('click', sqrt);
+        if (text === '%') btn.addEventListener('click', percent);
+        if (text === '1/x') btn.addEventListener('click', inverse);
+        
+        // Memory
+        if (text === 'MC') btn.addEventListener('click', memoryClear);
+        if (text === 'MR') btn.addEventListener('click', memoryRecall);
+        if (text === 'MS') btn.addEventListener('click', memoryStore);
+        if (text === 'M+') btn.addEventListener('click', memoryAdd);
+    });
+</script>
+
+</body>
+</html>

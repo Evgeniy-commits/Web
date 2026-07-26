@@ -8,17 +8,20 @@ let initX, initY, initLeft, initTop;
 
 handleWindow.addEventListener('mousedown', (e) => {
 	isDrag = true;
-	initX = e.clientX;
+	initX = e.clientX;	// Запоминаем, где была мышь в момент нажатия
 	initY = e.clientY;
+
+	// Запоминаем координаты окна
 	initLeft = calcWindow.getBoundingClientRect().left;
 	initTop = calcWindow.getBoundingClientRect().top;
 });
 
 document.addEventListener('mousemove', (e) => {
-	if (!isDrag) return;
-	e.preventDefault();
+	if (!isDrag) return;	// если не перемещаем, ничего не делаем
+	e.preventDefault();		// отменяем стандартное поведение браузера
 	const dX = e.clientX - initX;
 	const dY = e.clientY - initY;
+	// обновляем стили 
 	calcWindow.style.left = `${initLeft + dX}px`;
 	calcWindow.style.top = `${initTop + dY}px`;
 });
@@ -41,12 +44,13 @@ const display = document.getElementById('display');
 let curInput = '0';
 let prevInput = '';
 let operation = null;
-let resScreen = false;
+let resScreen = false;   // флаг. Показывает был ли получен результат(новая цифра сотрет предыдущую)
 let mem = 0;
 let lastOperand = null;
 
+// Ищем все элементы на странице, которые кнопки
 const buttons = document.querySelectorAll('button');
-
+// Проходимся по каждому элементу в button попадает одна конкретная кнопка
 buttons.forEach(button => {
 	button.addEventListener('click', btnClick);
 });
