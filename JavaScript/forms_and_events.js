@@ -63,23 +63,23 @@ document.addEventListener('mousemove', e => {
 //	switchButton.src = "sun.png";
 //	document.getElementById('debug-background').innerHTML = switchButton.src;
 //}
+
 document.addEventListener('input', (e) => {
 	document.body.style[e.target.id === 'background-color' ? 'backgroundColor' : 'color'] = e.target.value;
 });
 const skinButton = document.getElementById('switch-background');
-
-if (skinButton) {
-	skinButton.addEventListener('click', () => {
+skinButton.addEventListener('click', () => {
+	if (skinButton) {
 		document.body.style.backgroundColor = '';
 		document.body.style.color = '';
-		document.body.className = document.body.className === "dark" ? "light" : "dark";
-		//document.body.classList.toggle('dark');
-		//document.body.classList.toggle('light');
-		//let skin = document.body.className;
-		//let switchButton = document.getElementById('switch-background');
-		//switchButton.src = skin === "dark" ? "moon.png" : "sun.png";
-		//document.body.className = skin === "dark" ? "light" : "dark";
-		///*document.getElementById('debug-background').innerHTML = switchButton.src;*/
-		//document.getElementById('debug-background').innerHTML = document.body.className;
-	});
-}
+	}
+	document.body.className = document.body.className === "dark" ? "light" : "dark";
+	//document.body.classList.toggle('dark');
+	//document.body.classList.toggle('light');
+	//let skin = document.body.className;
+	//let switchButton = document.getElementById('switch-background');
+	//switchButton.src = skin === "dark" ? "moon.png" : "sun.png";
+	//document.body.className = skin === "dark" ? "light" : "dark";
+	///*document.getElementById('debug-background').innerHTML = switchButton.src;*/
+	//document.getElementById('debug-background').innerHTML = document.body.className;
+});

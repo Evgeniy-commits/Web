@@ -9,11 +9,15 @@
 	font-family: Tahoma;
 }
 
-.main-window
+.main-window 
 {
-	/*border: solid 1px;*/
+	position: fixed;
+	top: 50px;
+	left: 50px;
 	width: 300px;
 	height: 350px;
+	overflow: hidden;
+	user-select: none; /* Текст не выделяется при перетаскивании */
 }
 
 .title-bar
@@ -40,6 +44,9 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	cursor: move; /* Показываем, что можно тащить */
+	--webkit-user-drag: none;
 }
 
 .title-bar-left-side
@@ -210,6 +217,7 @@
 	border-style: none;
 	border: solid 1px gray;
 	margin: 2px;
+	text-align: right;
 }
 
 input:focus-visible
@@ -289,6 +297,7 @@ input:focus-visible
 	box-shadow: inset 1px -2px 5px 0px #DDDDDD;
 	border: solid 1px darkblue;
 	border-radius: 5px;
+	cursor: pointer;
 }
 
 .calc-buttons button:hover 
@@ -296,7 +305,8 @@ input:focus-visible
 	box-shadow: inset 0px -1px 5px 0px orange;
 }
 
-.calc-buttons button:active
+.calc-buttons button:active,
+.calc-buttons button.active
 {
 	background-color: lightgray;
 	box-shadow: inset 0px -1px 5px 0px #EEEEEE;
