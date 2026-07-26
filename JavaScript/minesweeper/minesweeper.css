@@ -43,17 +43,21 @@ button:hover {
 }
 
 /*Игровое поле*/
-.game-board{
+.game-board {
 	display: grid;
-	grid-template-columns: repeat(10, 20px);
-	grid-template-rows: repeat(10, 20px);
+	grid-template-columns: repeat(auto-fill, minmax(20px, 1fr));
+	grid-template-rows: repeat(auto-fill, minmax(20px, 1fr));
 	gap: 2px;
 	background-color: #bbb;
 	padding: 2px;
 	border: solid 5px #888;
+	max-width: 100%;
+	box-sizing: border-box;
+	overflow: auto;
 }
 
-.cell{
+.cell {
+	position: relative; /* чтобы ::after позиционировался относительно клетки */
 	width: 20px;
 	height: 20px;
 	background-color: #ddd;
@@ -63,7 +67,9 @@ button:hover {
 	font-weight: bold;
 	cursor: pointer;
 	user-select: none;
-	
+
+	box-shadow: inset 2px 2px #ccc, inset -2px -2px #999; /* Вдавленная тень для объема */
+	border: 1px solid #888; /* Тонкая рамка усиливает эффект */
 }
 
 /* *********************************************************** */
@@ -79,8 +85,10 @@ button:hover {
 
 /*Состояния ячеек*/
 
-.cell.opened{
+.cell.opened {
 	background-color: #fff;
+	box-shadow: none;
+	border-color: #ccc;
 }
 
 .cell.flagged::after {
@@ -91,10 +99,6 @@ button:hover {
 	text-align: center;
 	width: 80%;
 	height: 100%;
-}
-
-.cell {
-	position: relative; /* чтобы ::after позиционировался относительно клетки */
 }
 
 .cell.mine{
