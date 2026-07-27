@@ -43,24 +43,39 @@
 	</details>
 
 	<!-- -------------------------------------------------------------------------- -->
-	<div class="images-and-colors">
-		<div class="upload-image">
-			<div class="image-container">
-				<img alt="Фото студента" id="image" />
+	<details>
+		<summary>Фото и цвета</summary>
+		<div class="images-and-colors">
+			<div class="upload-image">
+				<div class="image-container">
+					<img alt="Фото студента" id="image" />
+				</div>
+				<input type="file" id="image-file" onchange="setImage()" />
 			</div>
-			<input type="file" id="image-file" onchange="setImage()" />
-		</div>
 
-		<div class="colors">
-			<div class="select-color">
-				<lable for="background-color">Цвет фона</lable>
-				<input type="color" id="background-color" value="#FFFFFF" />
-			</div>
-			<div class="select-color">
-				<lable for="foreground-color">Цвет текста</lable>
-				<input type="color" id="foreground-color" />
+			<div class="colors">
+				<div class="select-color">
+					<lable for="background-color">Цвет фона</lable>
+					<input type="color" id="background-color" value="#FFFFFF" />
+				</div>
+				<div class="select-color">
+					<lable for="foreground-color">Цвет текста</lable>
+					<input type="color" id="foreground-color" />
+				</div>
 			</div>
 		</div>
+	</details>
+
+	<h2 id="raw-date"></h2>
+	<div id="clock">
+		<h2>Time</h2>
+		<div id="current-time">
+			<span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span>
+		</div>
+		<div id="current-date">
+			<span id="years"></span>.<span id="months"></span>.<span id="days"></span>
+		</div>
+		<div id="day-of-week"></div>
 	</div>
 	<script src="forms_and_events.js"></script>
 </body>

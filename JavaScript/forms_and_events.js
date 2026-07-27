@@ -63,9 +63,11 @@ document.addEventListener('mousemove', e => {
 //	switchButton.src = "sun.png";
 //	document.getElementById('debug-background').innerHTML = switchButton.src;
 //}
-
+let transition = document.body.style.transition;
+document.body.style.transition = 'none';
 document.addEventListener('input', (e) => {
 	document.body.style[e.target.id === 'background-color' ? 'backgroundColor' : 'color'] = e.target.value;
+	document.body.style.transition = transition;
 });
 const skinButton = document.getElementById('switch-background');
 skinButton.addEventListener('click', () => {
@@ -91,4 +93,26 @@ function setDelay(e) {
 		document.body.style.transition =
 		`color ${delay}s, background-color ${delay}s, background-image ${delay}s`;
 
+}
+
+/* ///////////////////////////////////////////////////////////////////////// */
+
+document.addEventListener('DOMContentLoaded', () => { tickTimer(); });
+
+function tickTimer() {
+	let date = new Date();
+	document.getElementById('raw-date').innerHTML = date.toString();
+
+	document.getElementById('hours').innerHTML = addLeadingZero(date.getHours());
+	document.getElementById('minutes').innerHTML = addLeadingZero(date.getMinutes());
+	document.getElementById('seconds').innerHTML = addLeadingZero(date.getSeconds());
+	
+	document.getElementById('years').innerHTML = addLeadingZero(date.getFullYear());
+	document.getElementById('months').innerHTML = addLeadingZero(date.getMonth() + 1);
+	document.getElementById('days').innerHTML = addLeadingZero(date.getDate());
+	setTimeout(tickTimer, 100);
+}
+
+function addLeadingZero(number) {
+	return number < 10 ? '0' + `${number}` : `${number}`;
 }
