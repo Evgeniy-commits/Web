@@ -11,9 +11,15 @@
 	<div class="header">
 		<div>Header</div>
 		<div id="mouse"></div>
-		<div id="debug-background"></div>
-		<!--<img src="moon.png" id="switch-background"/>-->
-		<div id="switch-background"></div>
+		<div id="switch-background-container" >
+			<div id="debug-background"></div>
+			<div>
+				<lable for="delay">Delay:</lable>
+				<input type="number" min="1" max="8" value="3" id="switch-background-delay"/>
+			</div>
+			<!--<img src="moon.png" id="switch-background"/>-->
+			<div id="switch-background"></div>
+		</div>
 	</div>
 
 	<h1>Формы и события</h1>

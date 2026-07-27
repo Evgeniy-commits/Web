@@ -14,6 +14,7 @@
 	height: var(--bg-size);
 	padding: 0 calc(var(--bg-size) / 5);
 	background-size: var(--bg-size) var(--bg-size);
+	background-repeat: no-repeat;
 }
 
 .dark{
@@ -38,7 +39,14 @@
 
 /* ////////////////////////////////////////////////////////////////////////////////////// */
 
-#mouse{
+#switch-background-container, #switch-background-container > div
+{
+	display:flex;
+	padding: 0 8px;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////// */
+#mouse {
 	/*border: solid 1px;
 	width: 200px;*/
 }
