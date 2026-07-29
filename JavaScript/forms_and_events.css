@@ -59,11 +59,11 @@ body, #switch-background
 	width: 200px;*/
 }
 
-input, div, button 
+/*input, div, button 
 {
 	font-size: 24px;
 	width: 50%;
-}
+}*/
 
 input
 {
@@ -133,5 +133,12 @@ lable
 	font-family: 'Digital-7 Mono';
 	width: 98%;
 	font-size: 48px;
+	text-align: center;
+}
+
+#clock-controls div
+{	
+	font-size: 22px;
+	align-self: center;
 	text-align: center;
 }
