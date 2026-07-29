@@ -110,6 +110,9 @@ function tickTimer() {
 	document.getElementById('years').innerHTML = addLeadingZero(date.getFullYear());
 	document.getElementById('months').innerHTML = addLeadingZero(date.getMonth() + 1);
 	document.getElementById('days').innerHTML = addLeadingZero(date.getDate());
+
+	document.getElementById('day-of-week').innerHTML = addLeadingZero(new Date().toLocaleDateString('en-En', { weekday: 'long' }));
+
 	setTimeout(tickTimer, 100);
 }
 

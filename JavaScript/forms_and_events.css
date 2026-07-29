@@ -1,4 +1,12 @@
-﻿body {
+﻿
+@font-face 
+{
+	font-family: Digital-7 Mono;
+	src: url('digital-7 (mono).ttf');
+}
+
+body, #switch-background
+{
 	transition: color 3s, background-color 3s;
 }
 .header{
@@ -120,8 +128,10 @@ lable
 
 /*  /////////////////////////////////////////////////////////////////////// */
 
-#clock, #clock div{
+#clock, #clock div
+{
+	font-family: 'Digital-7 Mono';
 	width: 98%;
 	font-size: 48px;
-	text-align:center;
+	text-align: center;
 }
