@@ -137,6 +137,7 @@ function startCountdownTimer() {
 		btnStart.value = 'Stop';
 		targetDate.disabled = targetTime.disabled = true;
 		tickCountdown();
+		resetDisplay();
 	}
 	else {
 		btnStart.value = 'Start';
@@ -145,6 +146,7 @@ function startCountdownTimer() {
 }
 
 function tickCountdown() {
+	if (document.getElementById('btn-start').value == 'Start') return;
 	let now = new Date();
 
 	let targetDateControl = document.getElementById('target-date');
@@ -174,8 +176,68 @@ function tickCountdown() {
 	const SECONDS_PER_MINUTE = 60;
 	const SECONDS_PER_HOUR = 3600;
 	const SECONDS_PER_DAY = 86400;
+	const SECONDS_PER_WEEK = SECONDS_PER_DAY * 7;
+	const DAYS_PER_MONTH = 365.25 / 12;
+	const SECONDS_PER_MONTH = SECONDS_PER_DAY * DAYS_PER_MONTH;
+	const SECONDS_PER_YEAR = SECONDS_PER_DAY * 365 + SECONDS_PER_HOUR * 6;
 
 	let time_of_day = duration % SECONDS_PER_DAY;
+	let date = Math.floor(duration / SECONDS_PER_DAY)
+	date = date * SECONDS_PER_DAY; //убираем врем€ дн€ полученное выше
+
+	let years = Math.floor(date / SECONDS_PER_YEAR);
+	if (years > 0) {
+		date = date % SECONDS_PER_YEAR; // ≈сли промежуток больше года убираем годы, т.к. мы их уже получили
+		// получаем блок отображающий годы
+		let years_unit = document.getElementById('years-unit');
+		// ≈сли блока нет его нужно создать
+		if (years_unit == null) {
+			let years_block = createTimeBlock('years', years);
+			let hours_block = document.getElementById('hours-unit').parentElement;
+			hours_block.before(years_block);
+		}
+		else years_unit.innerHTML = addLeadingZero(years);
+	}
+	else removeTimeBlock('years');
+
+	let months = Math.floor(date / SECONDS_PER_MONTH);
+	if (months > 0) {
+		date = date % SECONDS_PER_MONTH;
+		let months_unit = document.getElementById("months-unit");
+		if (months_unit == null) {
+			let months_block = createTimeBlock('months', months);
+			let hours_block = document.getElementById('hours-unit').parentElement;
+			hours_block.before(months_block);
+		}
+		else months_unit.innerHTML = addLeadingZero(months);
+	}
+	else removeTimeBlock('months');
+
+	let weeks = Math.floor(date / SECONDS_PER_WEEK);
+	if (weeks > 0) {
+		date = date % SECONDS_PER_WEEK;
+		let weeks_unit = document.getElementById("weeks-unit");
+		if (weeks_unit == null) {
+			let weeks_block = createTimeBlock('weeks', addLeadingZero(weeks));
+			let hours_block = document.getElementById('hours-unit').parentElement;
+			hours_block.before(weeks_block);
+		}
+		else weeks_unit.innerHTML = addLeadingZero(weeks);
+	}
+	else removeTimeBlock('weeks');
+
+	let days = Math.floor(date / SECONDS_PER_DAY);
+	if (days > 0) {
+		let days_unit = document.getElementById("days-unit");
+		if (days_unit == null) {
+			let days_block = createTimeBlock('days', days);
+			let hours_block = document.getElementById('hours-unit').parentElement;
+			hours_block.before(days_block);
+		}
+		else days_unit.innerHTML = addLeadingZero(days);
+	}
+	else removeTimeBlock('days');
+
 	let hours = Math.trunc(time_of_day / SECONDS_PER_HOUR);
 	time_of_day = time_of_day % SECONDS_PER_HOUR;
 	let minutes = Math.trunc(time_of_day / SECONDS_PER_MINUTE);
@@ -185,6 +247,47 @@ function tickCountdown() {
 	document.getElementById('minutes-unit').innerHTML = addLeadingZero(minutes);
 	document.getElementById('seconds-unit').innerHTML = addLeadingZero(time_of_day);
 
-
 	setTimeout(tickCountdown, 100);
+}
+
+function createTimeBlock(name, value) {
+	let time_block = document.createElement('div');
+	time_block.className = 'time-block';
+
+	let unit = document.createElement('div');
+	unit.id = `${name}-unit`;
+	unit.className = 'time-unit';
+	unit.innerHTML = addLeadingZero(value);
+
+	let marker = document.createElement('div');
+	marker.id = `${name}-marker`;
+	marker.className = 'time-marker';
+	marker.innerHTML = name.charAt(0).toUpperCase() + name.slice(1);
+
+	time_block.prepend(unit);
+	time_block.append(marker);
+
+	return time_block;
+
+	// before() добавл€ет элемент перед открывающим дескриптором
+	// prepend() добавл€ет элемент после открывающего дескриптора
+	// append() добавл€ет элемент перед закрывающим дескриптором
+	// after() добавл€ет элемент после закрывающего дескриптора
+ }
+
+function removeTimeBlock(name) {
+	let unit = document.getElementById(`${name}-unit`);
+	if (unit != null) {
+		let block = unit.parentElement;
+		let display = block.parentElement;
+		display.removeChild(block);
+	}
+}
+
+function resetDisplay() {
+	let display = document.getElementById('display');
+	let children = display.children;
+	while (display.children[0].children[0].id != 'hours-unit') {
+		display.children[0].remove();
+	}
 }
